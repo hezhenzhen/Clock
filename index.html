@@ -87,8 +87,20 @@
             currentHours = currentTime.getHours();
             currentMinutes = currentTime.getMinutes();
             currentSeconds = currentTime.getSeconds();
-            if (currentHours > 12 ) currentHours -= 12;
             $("#the_time").html(currentHours + ':' + currentMinutes + ':' + currentSeconds)
+            if (currentHours > 12 ) currentHours -= 12;
+
+            currentSecsR = currentSeconds*6;
+            currentMinR = currentMinutes*6;
+            currentHourR = currentHours*30;
+
+            rotateObj("#second", currentSecsR);
+            rotateObj("#minute", currentMinR);
+            rotateObj("#hour", currentHourR);
+
+            // $("#the_time").html(currentHours + ':' + currentMinutes + ':' + currentSeconds)
+
+            setTimeout(updateTime, 1000);
         }
         $(function(){
             updateTime();
